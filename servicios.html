@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios Adicionales</title>
+    <link rel="stylesheet" href="CSS/styleS.css">
+</head>
+<body>
+    <h1>Gestión de Servicios Adicionales</h1>
+    <form method="POST">
+        <input type="text" name="nombre" placeholder="Nombre del Servicio" required>
+        <input type="number" step="0.01" name="precio" placeholder="Precio" required>
+        <button type="submit">Agregar Servicio</button>
+    </form>
+    <h2>Lista de Servicios Adicionales</h2>
+    <ul>
+        {% for servicio in servicios %}
+        <li>{{ servicio.nombre }} - ${{ servicio.precio }}</li>
+        {% endfor %}
+    </ul>
+    <a href="Index.html">Volver al Inicio</a>
+</body>
+</html>
