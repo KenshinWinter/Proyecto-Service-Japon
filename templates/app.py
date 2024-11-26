@@ -53,6 +53,12 @@ def gestion_clientes():
         clientes.append(Cliente(nombre, apellido, email, telefono))
         return redirect(url_for('gestion_clientes'))
     return render_template('clientes.html', clientes=clientes)
+    
+@app.route('/clientes/eliminar/<int:cliente_id>', methods=['POST'])
+def eliminar_cliente(cliente_id):
+    if 0 <= cliente_id < len(clientes):
+        del clientes[cliente_id]
+    return redirect(url_for('gestion_clientes'))
 
 @app.route('/servicios', methods=['GET', 'POST'])
 def gestion_servicios():
@@ -62,6 +68,12 @@ def gestion_servicios():
         servicios_adicionales.append(ServicioAd(nombre, precio))
         return redirect(url_for('gestion_servicios'))
     return render_template('servicios.html', servicios=servicios_adicionales)
+    
+@app.route('/servicios/eliminar/<int:servicio_id>', methods=['POST'])
+def eliminar_servicio(servicio_id):
+    if 0 <= servicio_id < len(servicios_adicionales):
+        del servicios_adicionales[servicio_id]
+    return redirect(url_for('gestion_servicios'))
 
 @app.route('/reservaciones', methods=['GET', 'POST'])
 def gestion_reservaciones():
@@ -81,9 +93,21 @@ def gestion_reservaciones():
 
     return render_template('reservaciones.html', clientes=clientes, servicios=servicios_adicionales, reservaciones=reservaciones)
 
+@app.route('/reservaciones/eliminar/<int:reservacion_id>', methods=['POST'])
+def eliminar_reservacion(reservacion_id):
+    if 0 <= reservacion_id < len(reservaciones):
+        del reservaciones[reservacion_id]
+    return redirect(url_for('gestion_reservaciones'))
+
 @app.route('/fechas_no_disponibles')
 def fechas_no_disponibles_view():
     return render_template('fechas_no_disponibles.html', fechas=fechas_no_disponibles)
+
+@app.route('/fechas_no_disponibles/eliminar/<int:fecha_id>', methods=['POST'])
+def eliminar_fecha_no_disponible(fecha_id):
+    if 0 <= fecha_id < len(fechas_no_disponibles):
+        del fechas_no_disponibles[fecha_id]
+    return redirect(url_for('fechas_no_disponibles_view'))
 
 # Iniciar la app
 if __name__ == '__main__':
