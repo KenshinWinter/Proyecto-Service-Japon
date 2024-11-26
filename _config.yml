@@ -1,0 +1,20 @@
+title: "Mi Sitio Jekyll"
+description: "Una descripción de mi sitio Jekyll"
+baseurl: "index.html" # la URL base de tu sitio, por ejemplo, /blog
+url: "https://kenshinwinter.github.io/Proyecto-Service-Japon/index.html" # la URL completa de tu sitio
+theme: minima # el tema que estás usando
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Configuración de Sass
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Configuración de Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    default_lang: "plaintext"
